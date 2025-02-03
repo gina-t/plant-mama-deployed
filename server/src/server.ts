@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express, { Request, Response } from 'express';
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 
@@ -10,7 +10,7 @@ import resolvers from './graphql/resolvers.js';
 
 import { readFileSync } from "fs";
 import connectDB from './config/db.js';
-// import routes from './routes/index';
+import routes from './routes/index.js';
 import { authenticateToken } from './utils/auth.js';
 
 import dotenv from 'dotenv';
@@ -35,20 +35,22 @@ const startApolloServer = async () => {
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
   app.use(cors());
-
+  app.use(routes);
+  
   app.use('/graphql', expressMiddleware(server, {
     context: async ({ req }: { req: Request }) => ({ token: await authenticateToken({ req }) }),
   }));
   if (process.env.NODE_ENV === 'production') {
-    const staticPath = path.join(__dirname, '../client/dist');
-    app.use(express.static(path.join(staticPath)));
+    const staticPath = path.join(__dirname, '../../client/dist');
+    app.use(express.static(staticPath));
+
     app.get('*', (_req: Request, res: Response) => {
-      const indexPath = path.join(__dirname, '../client/dist/index.html');
+      const indexPath = path.join(staticPath, 'index.html');
       res.sendFile(indexPath);
     });
   } else {
     app.get('*', (_req: Request, res: Response) => {
-      res.send('API is running...');
+      res.send('API is running');
     });
   }
 
