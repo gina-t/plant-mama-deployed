@@ -8,7 +8,6 @@ dotenv.config({ path: path.resolve(__dirname, '../../../.env.development') });
 import jwt from 'jsonwebtoken';
 import { GraphQLError } from 'graphql';
 
-
 console.log('JWT_SECRET_KEY in auth.ts:', process.env.JWT_SECRET_KEY); 
 
 export const authenticateToken = ({ req }: { req: any }) => {

@@ -1,16 +1,118 @@
 type Query {
-  product(id:ID!): Product
+  # Product Queries
+  product(id: ID!): Product
   products: [Product]
+
+  # User Queries
+  user(id: ID!): User
+  users: [User]
+
+  # Cart Queries
+  cart(id: ID!): Cart
+  carts: [Cart]
 }
 
 type Mutation {
-  createRecord(name: String!, name: String, price: String): Product
-  deleteRecord(id: ID!): Boolean
-  updateRecord(id: ID! name: String, position: String, level: String): Product
+  # Product Mutations
+  createProduct(
+    name: String!,
+    price: Float!,
+    description: String!,
+    category: String!,
+    stock: Int!,
+    imageUrl: String!,
+    sku: String!,
+    quantity: Int!,
+    wishlist: Boolean,
+    specialOffer: String,
+    shippingInfo: String,
+    brandInfo: String!,
+    createdBy: ID!,
+    updatedBy: ID!
+  ): Product
+  updateProduct(
+    id: ID!,
+    name: String,
+    price: Float,
+    description: String,
+    category: String,
+    stock: Int,
+    imageUrl: String,
+    sku: String,
+    quantity: Int,
+    wishlist: Boolean,
+    specialOffer: String,
+    shippingInfo: String,
+    brandInfo: String,
+    updatedBy: ID!
+  ): Product
+  deleteProduct(id: ID!): Boolean
+
+  # User Mutations
+  createUser(username: String!, email: String!, password: String!): User
+  updateUser(id: ID!, username: String, email: String, password: String, isAdmin: Boolean): User
+  deleteUser(id: ID!): Boolean
+
+  # Cart Mutations
+  createCart(userId: ID!, items: [CartItemInput]!): Cart
+  updateCart(id: ID!, items: [CartItemInput], promoCode: String, total: Float): Cart
+  deleteCart(id: ID!): Boolean
 }
 
 type Product {
-  id: ID
-  name: String
-  price: Float
+  id: ID!
+  name: String!
+  price: Float!
+  description: String!
+  category: String!
+  stock: Int!
+  imageUrl: String!
+  sku: String!
+  quantity: Int!
+  wishlist: Boolean
+  specialOffer: String
+  shippingInfo: String
+  brandInfo: String!
+  createdAt: String!
+  updatedAt: String!
+  createdBy: User!
+  updatedBy: User!
+  reviews: [Review]
+}
+
+type User {
+  id: ID!
+  username: String!
+  email: String!
+  password: String!
+  isAdmin: Boolean
+  cart: Cart
+}
+
+type Cart {
+  id: ID!
+  items: [CartItem]!
+  promoCode: String
+  total: Float!
+  user: User!
+}
+
+type CartItem {
+  product: Product!
+  quantity: Int!
+  price: Float!
+}
+
+input CartItemInput {
+  productId: ID!
+  quantity: Int!
+  price: Float!
+}
+
+type Review {
+  id: ID!
+  content: String!
+  rating: Int!
+  user: User!
+  product: Product!
 }
