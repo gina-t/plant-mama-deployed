@@ -10,7 +10,7 @@ import resolvers from './graphql/resolvers.js';
 
 import { readFileSync } from "fs";
 import connectDB from './config/db.js';
-import routes from './routes/index.js';
+// import routes from './routes/index.js';
 import { authenticateToken } from './utils/auth.js';
 
 import dotenv from 'dotenv';
@@ -35,7 +35,7 @@ const startApolloServer = async () => {
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
   app.use(cors());
-  app.use(routes);
+  // app.use(routes);
   
   app.use('/graphql', expressMiddleware(server, {
     context: async ({ req }: { req: Request }) => ({ token: await authenticateToken({ req }) }),
