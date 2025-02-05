@@ -1,9 +1,21 @@
-import mongoose from 'mongoose';
-import dateFormat from '../utils/dateFormat.js'; // Import dateFormat function
+import mongoose, { Document } from 'mongoose';
 
 const { Schema } = mongoose;
 
-const cartItemSchema = new Schema({
+export interface CartItemDocument extends Document {
+  product: mongoose.Types.ObjectId;
+  quantity: number;
+  price: number;
+}
+
+export interface CartDocument extends Document {
+  items: CartItemDocument[];
+  promoCode: string;
+  total: number;
+  user: mongoose.Types.ObjectId;
+}
+
+const cartItemSchema = new Schema<CartItemDocument>({
   product: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Product',
@@ -20,7 +32,7 @@ const cartItemSchema = new Schema({
   },
 });
 
-const cartSchema = new Schema({
+const cartSchema = new Schema<CartDocument>({
   items: [cartItemSchema],
   promoCode: {
     type: String,
@@ -38,18 +50,9 @@ const cartSchema = new Schema({
   },
 }, {
   timestamps: true,
-  toJSON: { virtuals: true },
-  toObject: { virtuals: true },
+  toJSON: { getters: true },
+  toObject: { getters: true },
 });
 
-// Create virtuals for formatted createdAt and updatedAt
-cartSchema.virtual('formattedCreatedAt').get(function() {
-  return dateFormat(this.createdAt);
-});
-
-cartSchema.virtual('formattedUpdatedAt').get(function() {
-  return dateFormat(this.updatedAt);
-});
-
-const Cart = mongoose.model('Cart', cartSchema);
+const Cart = mongoose.model<CartDocument>('Cart', cartSchema);
 export default Cart;
