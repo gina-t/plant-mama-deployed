@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "compile": "npx tsc",
-    "start": "node dist/server.js",
+    "start": "npm run compile && node dist/server.js",
     "watch": "nodemon --watch 'src/**/*.ts' --exec 'npm run compile && node dist/server.js'",
-    "seed": "node dist/seeds/seed.js",
+    "seed": "npm run compile && node dist/seeds/seed.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

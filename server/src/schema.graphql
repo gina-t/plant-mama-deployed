@@ -1,8 +1,4 @@
 type Query {
-  # Product Queries
-  product(id: ID!): Product
-  products: [Product]
-
   # User Queries
   user(id: ID!): User
   users: [User]
@@ -10,26 +6,15 @@ type Query {
   # Cart Queries
   cart(id: ID!): Cart
   carts: [Cart]
+
+  # Product Queries
+  product(id: ID!): Product
+  products: [Product]
 }
 
 type Mutation {
   # Product Mutations
-  createProduct(
-    name: String!,
-    price: Float!,
-    description: String!,
-    category: String!,
-    stock: Int!,
-    imageUrl: String!,
-    sku: String!,
-    quantity: Int!,
-    wishlist: Boolean,
-    specialOffer: String,
-    shippingInfo: String,
-    brandInfo: String!,
-    createdBy: ID!,
-    updatedBy: ID!
-  ): Product
+  createProduct(input: CreateProductInput!): Product
   updateProduct(
     id: ID!,
     name: String,
@@ -43,20 +28,47 @@ type Mutation {
     wishlist: Boolean,
     specialOffer: String,
     shippingInfo: String,
-    brandInfo: String,
-    updatedBy: ID!
+    brandInfo: String
   ): Product
-  deleteProduct(id: ID!): Boolean
+}
 
-  # User Mutations
-  createUser(username: String!, email: String!, password: String!): User
-  updateUser(id: ID!, username: String, email: String, password: String, isAdmin: Boolean): User
-  deleteUser(id: ID!): Boolean
+input CreateProductInput {
+  name: String!
+  price: Float!
+  description: String!
+  category: String!
+  stock: Int!
+  imageUrl: String!
+  sku: String!
+  quantity: Int!
+  wishlist: Boolean
+  specialOffer: String
+  shippingInfo: String
+  brandInfo: String!
+  createdBy: ID!
+  updatedBy: ID!
+}
 
-  # Cart Mutations
-  createCart(userId: ID!, items: [CartItemInput]!): Cart
-  updateCart(id: ID!, items: [CartItemInput], promoCode: String, total: Float): Cart
-  deleteCart(id: ID!): Boolean
+type User {
+  id: ID!
+  username: String!
+  email: String!
+  password: String!
+  isAdmin: Boolean!
+}
+
+type Cart {
+  id: ID!
+  items: [CartItem!]!
+  promoCode: String
+  total: Float!
+  user: User!
+}
+
+type CartItem {
+  product: Product!
+  quantity: Int!
+  price: Float!
 }
 
 type Product {
@@ -73,46 +85,6 @@ type Product {
   specialOffer: String
   shippingInfo: String
   brandInfo: String!
-  createdAt: String!
-  updatedAt: String!
   createdBy: User!
   updatedBy: User!
-  reviews: [Review]
-}
-
-type User {
-  id: ID!
-  username: String!
-  email: String!
-  password: String!
-  isAdmin: Boolean
-  cart: Cart
-}
-
-type Cart {
-  id: ID!
-  items: [CartItem]!
-  promoCode: String
-  total: Float!
-  user: User!
-}
-
-type CartItem {
-  product: Product!
-  quantity: Int!
-  price: Float!
-}
-
-input CartItemInput {
-  productId: ID!
-  quantity: Int!
-  price: Float!
-}
-
-type Review {
-  id: ID!
-  content: String!
-  rating: Int!
-  user: User!
-  product: Product!
 }

@@ -1,0 +1,19 @@
+[
+  {
+    "items": [
+      {
+        "product": "67a1baa22fe762e6813fd4c8", 
+        "quantity": 1,
+        "price": 58.00
+      },
+      {
+        "product": "67a1baa22fe762e6813fd4c9", 
+        "quantity": 1,
+        "price": 28.00
+      }
+    ],
+    "promoCode": "SUMMER21",
+    "total": 170.00,
+    "user": "60c72b2f9b1d8b3a4c8b4569" 
+  }
+]
