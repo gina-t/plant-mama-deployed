@@ -1,9 +1,20 @@
-import mongoose from 'mongoose';
-import dateFormat from '../utils/dateFormat.js'; // Import dateFormat function
+import mongoose, { Document } from 'mongoose';
 
 const { Schema } = mongoose;
 
-const productSchema = new Schema({
+export interface ProductDocument extends Document {
+  name: string;
+  price: number;
+  description: string;
+  category: string;
+  stock: number;
+  imageUrl: string;
+  quantity: number;
+  shippingInfo: string;
+  reviews: mongoose.Types.ObjectId[];
+}
+
+const productSchema = new Schema<ProductDocument>({
   name: {
     type: String,
     required: true,
@@ -29,49 +40,14 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
-  sku: {
-    type: String,
-    required: true,
-    unique: true,
-  },
   quantity: {
     type: Number,
     required: true,
     default: 1,
   },
-  wishlist: {
-    type: Boolean,
-    default: false,
-  },
-  specialOffer: {
-    type: String,
-    default: '',
-  },
   shippingInfo: {
     type: String,
-    default: 'FREE AU SHIPPING OVER $50',
-  },
-  brandInfo: {
-    type: String,
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
-  },
-  createdBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
-  updatedBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
+    default: 'Free shipping in Australia if you spend over $50',
   },
   reviews: [
     {
@@ -85,15 +61,6 @@ const productSchema = new Schema({
   toObject: { virtuals: true },
 });
 
-// Create virtuals for formatted createdAt and updatedAt
-productSchema.virtual('formattedCreatedAt').get(function() {
-  return dateFormat(this.createdAt);
-});
-
-productSchema.virtual('formattedUpdatedAt').get(function() {
-  return dateFormat(this.updatedAt);
-});
-
-const Product = mongoose.model('Product', productSchema);
+const Product = mongoose.model<ProductDocument>('Product', productSchema);
 
 export default Product;

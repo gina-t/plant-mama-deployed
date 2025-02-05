@@ -4,11 +4,5 @@
     "email": "taoamstaff@gmail.com",
     "password": "hashed_password", 
     "isAdmin": false
-  },
-  {
-    "username": "cooper",
-    "email": "cooperkelpie@gmail.com",
-    "password": "hashed_password",
-    "isAdmin": false
   }
 ]

@@ -6,14 +6,8 @@
     "category": "Indoor Plants",
     "stock": 5,
     "imageUrl": "images/aglaonema.jpg",
-    "sku": "AG123",
     "quantity": 1,
-    "wishlist": false,
-    "specialOffer": "10% off",
-    "shippingInfo": "FREE AU SHIPPING OVER $50",
-    "brandInfo": "PlantMama",
-    "createdBy": "60c72b2f9b1d8b3a4c8b4567",
-    "updatedBy": "60c72b2f9b1d8b3a4c8b4567"
+    "shippingInfo": "FREE AU SHIPPING OVER $50" 
   },
   {
     "name": "Anthurium",
@@ -22,14 +16,8 @@
     "category": "Indoor Plants",
     "stock": 5,
     "imageUrl": "images/anthurium.jpg",
-    "sku": "AN123",
     "quantity": 1,
-    "wishlist": false,
-    "specialOffer": "10% off",
-    "shippingInfo": "FREE AU SHIPPING OVER $50",
-    "brandInfo": "PlantMama",
-    "createdBy": "60c72b2f9b1d8b3a4c8b4567",
-    "updatedBy": "60c72b2f9b1d8b3a4c8b4567"
+    "shippingInfo": "FREE AU SHIPPING OVER $50"
   },
   {
     "name": "Monstera Deliciosa",
@@ -38,14 +26,8 @@
     "category": "Indoor Plants",
     "stock": 5,
     "imageUrl": "images/monstera-deliciosa.jpg",
-    "sku": "MD123",
     "quantity": 1,
-    "wishlist": false,
-    "specialOffer": "15% off",
-    "shippingInfo": "FREE AU SHIPPING OVER $50",
-    "brandInfo": "PlantMama",
-    "createdBy": "60c72b2f9b1d8b3a4c8b4567",
-    "updatedBy": "60c72b2f9b1d8b3a4c8b4567"
+    "shippingInfo": "FREE AU SHIPPING OVER $50"
   },
   {
     "name": "Begonia Maculata",
@@ -54,14 +36,8 @@
     "category": "Indoor Plants",
     "stock": 5,
     "imageUrl": "images/begonia-maculata.jpg",
-    "sku": "BM123",
     "quantity": 1,
-    "wishlist": false,
-    "specialOffer": "15% off",
-    "shippingInfo": "FREE AU SHIPPING OVER $50",
-    "brandInfo": "PlantMama",
-    "createdBy": "60c72b2f9b1d8b3a4c8b4567",
-    "updatedBy": "60c72b2f9b1d8b3a4c8b4567"
+    "shippingInfo": "FREE AU SHIPPING OVER $50"  
   },
   {
     "name": "Fiddle Leaf Fig",
@@ -70,14 +46,9 @@
     "category": "Indoor Plants",
     "stock": 5,
     "imageUrl": "images/fiddle-leaf-fig.jpg",
-    "sku": "FLF123",
     "quantity": 1,
-    "wishlist": false,
-    "specialOffer": "10% off",
-    "shippingInfo": "FREE AU SHIPPING OVER $50",
-    "brandInfo": "PlantMama",
-    "createdBy": "60c72b2f9b1d8b3a4c8b4567",
-    "updatedBy": "60c72b2f9b1d8b3a4c8b4567"
+    "shippingInfo": "FREE AU SHIPPING OVER $50"
+    
   },
   {
     "name": "Olea Europaea",
@@ -86,14 +57,9 @@
     "category": "Indoor Plants",
     "stock": 5,
     "imageUrl": "images/olea-europaea.jpg",
-    "sku": "CO123",
     "quantity": 1,
-    "wishlist": false,
-    "specialOffer": "10% off",
-    "shippingInfo": "FREE AU SHIPPING OVER $50",
-    "brandInfo": "PlantMama",
-    "createdBy": "60c72b2f9b1d8b3a4c8b4567",
-    "updatedBy": "60c72b2f9b1d8b3a4c8b4567"
+    "shippingInfo": "FREE AU SHIPPING OVER $50"
+    
   },
   {
     "name": "Philodendron",
@@ -102,13 +68,8 @@
     "category": "Indoor Plants",
     "stock": 5,
     "imageUrl": "images/philodendron.jpg",
-    "sku": "PD123",
     "quantity": 1,
-    "wishlist": false,
-    "specialOffer": "15% off",
-    "shippingInfo": "FREE AU SHIPPING OVER $50",
-    "brandInfo": "PlantMama",
-    "createdBy": "60c72b2f9b1d8b3a4c8b4567",
-    "updatedBy": "60c72b2f9b1d8b3a4c8b4567"
+    "shippingInfo": "FREE AU SHIPPING OVER $50"
+   
   }
 ]
