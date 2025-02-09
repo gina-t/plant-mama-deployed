@@ -17,7 +17,10 @@ const adminResolvers = {
     },
   },
   Mutation: {
-    loginAdmin: async (_: any, { username, password }: { username: string, password: string }) => {
+    loginAdmin: async (
+      _: any,
+      { username, password }: { username: string; password: string }
+    ) => {
       try {
         const admin = await Admin.findOne({ username });
         if (!admin) {

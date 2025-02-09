@@ -1,8 +1,27 @@
-import { User } from '../../models/index.js';
-import { signToken } from '../../utils/auth.js';
-import bcrypt from 'bcryptjs';
+// Resolvers are functions that implement the logic for fetching and manipulating the data defined in the type definitions. Each field in the schema has a corresponding resolver function that is responsible for returning the data for that field.
 
-const userResolvers = {
+import { User } from '../../models/index.js';
+import { signToken, AuthenticationError } from '../../utils/auth.js';
+
+interface LoginUserArgs {
+  email: string;
+  password: string;
+}
+
+interface CreateUserArgs {
+  input: {
+    username: string;
+    email: string;
+    password: string;
+    isAdmin: boolean;
+  };
+}
+
+interface UserArgs {
+  username: string;
+}
+
+const userAuthResolvers = {
   Query: {
     users: async () => {
       try {
@@ -13,9 +32,9 @@ const userResolvers = {
         throw new Error('Error fetching users');
       }
     },
-    user: async (_: any, { id }: { id: string }) => {
+    user: async (_parent: any, { username }: UserArgs) => {
       try {
-        const user = await User.findById(id);
+        const user = await User.findOne({ username });
         return user;
       } catch (error) {
         console.error('Error fetching user:', error);
@@ -24,30 +43,34 @@ const userResolvers = {
     },
   },
   Mutation: {
-    createUser: async (_: any, { input }: any) => {
+    createUser: async (_parent: any, { input }: CreateUserArgs) => {
       try {
-        const hashedPassword = await bcrypt.hash(input.password, 10);
-        const user = new User({ ...input, password: hashedPassword });
-        await user.save();
-        return user;
+        const user = await User.create({ ...input });
+        const token = signToken(user.username, user.email, user._id);
+        return { token, user };
       } catch (error) {
         console.error('Error creating user:', error);
         throw new Error('Error creating user');
       }
     },
-    updateUser: async (_: any, { id, ...updateData }: any) => {
+    loginUser: async (_parent: any, { email, password }: LoginUserArgs) => {
       try {
-        if (updateData.password) {
-          updateData.password = await bcrypt.hash(updateData.password, 10);
+        const user = await User.findOne({ email });
+        if (!user) {
+          throw new AuthenticationError('Could not authenticate user');
         }
-        const user = await User.findByIdAndUpdate(id, updateData, { new: true });
-        return user;
+        const correctPw = await user.isCorrectPassword(password);
+        if (!correctPw) {
+          throw new AuthenticationError('Could not authenticate user');
+        }
+        const token = signToken(user.username, user.email, user._id);
+        return { token, user };
       } catch (error) {
-        console.error('Error updating user:', error);
-        throw new Error('Error updating user');
+        console.error('Error logging in:', error);
+        throw new Error('Error logging in');
       }
     },
   },
 };
 
-export default userResolvers;
+export default userAuthResolvers;
