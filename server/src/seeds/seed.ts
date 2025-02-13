@@ -28,10 +28,6 @@ const seedDatabase = async (): Promise<void> => {
       });
       console.log('User created:', user);
     }
-
- 
-      
-
     console.log('Seeding completed successfully');
     process.exit(0);
   

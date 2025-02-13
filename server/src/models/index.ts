@@ -1,6 +1,6 @@
-import Admin from './adminModel.js';
-import Cart from './cartModel.js';
-import Product from './productModel.js';
-import User from './userModel.js';
+import User, { UserDocument } from './userModel.js';
+import Cart, { CartDocument } from './cartModel.js';
+import Product, { ProductDocument } from './productModel.js';
+import Admin, { AdminDocument } from './adminModel.js';
 
-export { Admin, Cart, Product, User };
+export { User, UserDocument, Cart, CartDocument, Product, ProductDocument, Admin, AdminDocument };

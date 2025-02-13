@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import dragonfly from "../assets/dragonfly.svg";
 import { useState, type FormEvent, type ChangeEvent } from "react";
 import { useMutation } from "@apollo/client";
-import { LOGIN_USER, CREATE_USER } from "../utils/mutations"; 
+import { LOGIN_USER, CREATE_USER } from "../graphql/userGraphql/mutations"; 
 import Auth from "../utils/auth";
 
 interface FormProps {
@@ -63,11 +62,11 @@ const Form = ({ conditionalValue }: FormProps) => {
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <img
+          {/* <img
             alt="plantmama"
             src={dragonfly}
             className="mx-auto h-10 w-auto"
-          />
+          /> */}
           <h2 className="mt-6 text-center text-xl/9 font-bold tracking-tight text-gray-600">
             {isRegister ? "Register for an account" : "Sign in to your account"}
           </h2>
