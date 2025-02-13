@@ -7,11 +7,18 @@ import App from "./App.tsx";
 import StoreFrontPage from "./pages/StoreFrontPage.tsx";
 import ProductPage from "./pages/ProductPage.tsx";
 import ShoppingCartPage from "./pages/ShoppingCartPage.tsx";
-import OrderDetailsPage from "./pages/OrderDetailsPage.tsx";
+
 import SpecialOffersPage from "./pages/SpecialOffersPage.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import RegisterPage from "./pages/RegisterPage.tsx";
 import AboutUsPage from "./pages/AboutUsPage.tsx";
+import PlantsPage from "./pages/PlantsPage.tsx";
+import PotsPage from "./pages/PotsPage.tsx";
+import AccessoriesPage from "./pages/AccessoriesPage.tsx";
+import NewArrivalsPage from "./pages/NewArrivalsPage.tsx";
+import GardenDesignPage from "./pages/GardenDesignPage.tsx";
+import { ShoppingCartProvider } from "./context/ShoppingCartContext.tsx";
+import CheckoutPage from "./pages/CheckoutPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -24,16 +31,36 @@ const router = createBrowserRouter([
         element: <StoreFrontPage />,
       },
       {
+        path: "/plants",
+        element: <PlantsPage />,
+      },
+      {
+        path: "/pots",
+        element: <PotsPage />,
+      },
+      {
+        path: "/accessories",
+        element: <AccessoriesPage />,
+      },
+      {
+        path: "/garden-design",
+        element: <GardenDesignPage />,
+      },
+      {
         path: "/product/:id",
         element: <ProductPage />,
+      },
+      {
+        path: "/new-arrivals",
+        element: <NewArrivalsPage />,
       },
       {
         path: "/cart",
         element: <ShoppingCartPage />,
       },
       {
-        path: "/order-details",
-        element: <OrderDetailsPage />,
+        path: "/checkout",
+        element: <CheckoutPage />,
       },
       {
         path: "/special-offers",
@@ -59,7 +86,9 @@ const rootElement = document.getElementById("root");
 if (rootElement) {
   ReactDOM.createRoot(rootElement).render(
     <ApolloProvider client={client}>
-      <RouterProvider router={router} />
+      <ShoppingCartProvider>
+        <RouterProvider router={router} />
+      </ShoppingCartProvider>
     </ApolloProvider>,
   );
 }
