@@ -25,5 +25,8 @@
   "dependencies": {
     "concurrently": "^9.1.2",
     "express-async-handler": "^1.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
   }
 }
