@@ -11,7 +11,6 @@ const seedDatabase = async (): Promise<void> => {
     await connectDB();
     await cleanDB();
 
-    
     const admin = await Admin.insertMany(adminData);
     console.log('Admin created:', admin);
     
