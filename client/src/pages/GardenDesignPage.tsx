@@ -1,5 +1,4 @@
 
-
 const GardenDesignPage = () => {
   return (
     <div>

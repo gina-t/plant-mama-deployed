@@ -1,5 +1,4 @@
 
-
 const NewArrivalsPage = () => {
   return (
     <div>NewArrivalsPage</div>

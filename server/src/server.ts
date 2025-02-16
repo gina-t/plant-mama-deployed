@@ -1,12 +1,13 @@
-import express, { Request, Response } from 'express';
+import express, { Express, Request, Response } from 'express';
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import cors from 'cors';
-import { typeDefs, resolvers } from './graphqlSchemas/index.js'; 
+import { typeDefs, resolvers } from './graphqlSchemas/index.js';
 import connectDB from './config/db.js';
 import { authenticateToken } from './utils/auth.js';
 import dotenv from 'dotenv';
 import path from 'node:path';
+import Stripe from 'stripe';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -22,12 +23,44 @@ const startApolloServer = async () => {
   await server.start();
   await connectDB();
 
-  const PORT = process.env.PORT || 5000;
-  const app = express();
+  const PORT = process.env.PORT || 3001;
+  const app: Express = express();
+  const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+  console.log('Stripe Secret Key:', stripeSecretKey);
 
+  if (!stripeSecretKey) {
+    throw new Error('Missing STRIPE_SECRET_KEY environment variable');
+  }
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
+    apiVersion: '2025-01-27.acacia',
+  });
+  console.log('Stripe instance created successfully');
+  
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
-  app.use(cors());
+  app.use(cors({ origin: 'http://localhost:5173' })); 
+
+  interface RequestBody {
+    amount: number;
+  }
+
+  app.post('/secret', async (req: Request, res: Response) => {
+    const { amount } = req.body;
+    console.log("Amount:", amount);
+    console.log("Type of Amount:", typeof amount);
+    try {
+      const intent = await stripe.paymentIntents.create({
+        amount: amount,
+        currency: 'aud',
+        automatic_payment_methods: { enabled: true },
+      });
+
+      res.json({ client_secret: intent.client_secret });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: 'Unable to create payment intent' });
+    }
+  });
 
   app.use(
     '/graphql',

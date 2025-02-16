@@ -5,9 +5,8 @@ import client from "./utils/apolloClient";
 import "./index.css";
 import App from "./App.tsx";
 import StoreFrontPage from "./pages/StoreFrontPage.tsx";
-import ProductPage from "./pages/ProductPage.tsx";
+import ProductOverviewPage from "./pages/ProductOverviewPage.tsx";
 import ShoppingCartPage from "./pages/ShoppingCartPage.tsx";
-
 import SpecialOffersPage from "./pages/SpecialOffersPage.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import RegisterPage from "./pages/RegisterPage.tsx";
@@ -16,9 +15,9 @@ import PlantsPage from "./pages/PlantsPage.tsx";
 import PotsPage from "./pages/PotsPage.tsx";
 import AccessoriesPage from "./pages/AccessoriesPage.tsx";
 import NewArrivalsPage from "./pages/NewArrivalsPage.tsx";
-import GardenDesignPage from "./pages/GardenDesignPage.tsx";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext.tsx";
 import CheckoutPage from "./pages/CheckoutPage.tsx";
+import ThankyouPage from "./pages/ThankyouPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -31,52 +30,52 @@ const router = createBrowserRouter([
         element: <StoreFrontPage />,
       },
       {
-        path: "/plants",
+        path: "plants",
         element: <PlantsPage />,
       },
       {
-        path: "/pots",
+        path: "pots",
         element: <PotsPage />,
       },
       {
-        path: "/accessories",
+        path: "accessories",
         element: <AccessoriesPage />,
       },
       {
-        path: "/garden-design",
-        element: <GardenDesignPage />,
+        path: "plants/:id",
+        element: <ProductOverviewPage />,
       },
       {
-        path: "/product/:id",
-        element: <ProductPage />,
-      },
-      {
-        path: "/new-arrivals",
+        path: "new-arrivals",
         element: <NewArrivalsPage />,
       },
       {
-        path: "/cart",
+        path: "cart",
         element: <ShoppingCartPage />,
       },
       {
-        path: "/checkout",
+        path: "checkout",
         element: <CheckoutPage />,
       },
       {
-        path: "/special-offers",
+        path: "special-offers",
         element: <SpecialOffersPage />,
       },
       {
-        path: "/login",
+        path: "login",
         element: <LoginPage />,
       },
       {
-        path: "/register",
+        path: "register",
         element: <RegisterPage />,
       },
       {
-        path: "/about-us",
+        path: "about-us",
         element: <AboutUsPage />,
+      },
+      {
+        path: "thankyou",
+        element: <ThankyouPage />,
       },
     ],
   },

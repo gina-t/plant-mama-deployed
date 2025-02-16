@@ -1,7 +1,10 @@
 import { useContext } from "react";
-import { ShoppingCartContext } from "./ShoppingCartContext.tsx";
+import {
+  ShoppingCartContext,
+  ShoppingCartContextType,
+} from "./ShoppingCartContext";
 
-const useShoppingCart = () => {
+const useShoppingCart = (): ShoppingCartContextType => {
   const context = useContext(ShoppingCartContext);
   if (!context) {
     throw new Error(
