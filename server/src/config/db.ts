@@ -1,24 +1,25 @@
-import mongoose from "mongoose";
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
+import path from 'node:path';
+import { fileURLToPath } from 'url';
 
-// Load environment variables from .env.development in the root directory
-dotenv.config({ path: '../../.env.development' });
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+dotenv.config({ path: path.resolve(__dirname, '../../../.env.development') });
 
-const connectDB = async () => {
+import mongoose from 'mongoose';
+const mongoUri = process.env.MONGO_DB_URI;
+
+const connectDB = async (): Promise<typeof mongoose.connection> => {
   try {
-    const mongoUri = process.env.MONGO_DB_URI;
     if (!mongoUri) {
       throw new Error("MONGO_DB_URI is not defined in the environment variables");
     }
     const conn = await mongoose.connect(mongoUri);
     console.log(`MongoDB connected: ${conn.connection.host}`);
+    return conn.connection;
   } catch (error) {
-    if (error instanceof Error) {
-      console.error(`Error: ${error.message}`);
-    } else {
-      console.error(`Error: ${String(error)}`);
-    }
-    process.exit(1);
+    console.error('Error connecting to MongoDB:', error);
+    throw new Error('Error connecting to MongoDB');
   }
 };
 

@@ -1,0 +1,31 @@
+{
+  "name": "plant-mama-deployed",
+  "version": "1.0.0",
+  "description": "A scalable, user-focused, e-commerce MERN app featuring a graphql API.",
+  "homepage": "https://github.com/gina-t/plant-mama-deployed#readme",
+  "bugs": {
+    "url": "https://github.com/gina-t/plant-mama-deployed/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gina-t/plant-mama-deployed.git"
+  },
+  "license": "MIT",
+  "author": "ginadrcoder@gmail.com",
+  "type": "module",
+  "main": "server/dist/server.js",
+  "scripts": {
+    "start": "node server/dist/server.js",
+    "dev": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "build": "concurrently \"cd server && npm run build\" \"cd client && npm run build\"",
+    "render-build": "npm install && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express-async-handler": "^1.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

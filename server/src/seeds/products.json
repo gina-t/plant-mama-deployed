@@ -1,0 +1,75 @@
+[
+  {
+    "name": "Aglaonema",
+    "price": 64.00,
+    "description": "Delight in the elegance of Aglaonema, boasting variegated cream and green leaves. with its air-purifying qualities, it is the prfect addition to your home office.",
+    "category": "Indoor Plants",
+    "stock": 5,
+    "imageUrl": "images/aglaonema.jpg",
+    "quantity": 1,
+    "shippingInfo": "FREE AU SHIPPING OVER $50" 
+  },
+  {
+    "name": "Anthurium",
+    "price": 42.00,
+    "description": "Bring a touch of the tropics to your home with Anthurium. This plant features glossy, heart-shaped leaves and striking blush flowers.",
+    "category": "Indoor Plants",
+    "stock": 5,
+    "imageUrl": "images/anthurium.jpg",
+    "quantity": 1,
+    "shippingInfo": "FREE AU SHIPPING OVER $50"
+  },
+  {
+    "name": "Monstera Deliciosa",
+    "price": 26.00,
+    "description": "With its glossy green and fenestrated leaves, and aerial root system, Monstera will make a statement in your favourite room.",
+    "category": "Indoor Plants",
+    "stock": 5,
+    "imageUrl": "images/monstera-deliciosa.jpg",
+    "quantity": 1,
+    "shippingInfo": "FREE AU SHIPPING OVER $50"
+  },
+  {
+    "name": "Begonia Maculata",
+    "price": 44.00,
+    "description": "With its vibrant colours and textured leaves, this beauty is sure to be a conversations starter.",
+    "category": "Indoor Plants",
+    "stock": 5,
+    "imageUrl": "images/begonia-maculata.jpg",
+    "quantity": 1,
+    "shippingInfo": "FREE AU SHIPPING OVER $50"  
+  },
+  {
+    "name": "Fiddle Leaf Fig",
+    "price": 38.00,
+    "description": "With its large, violin-shaped leaves, Fiddle Leaf Fig is a statement piece for any room.",
+    "category": "Indoor Plants",
+    "stock": 5,
+    "imageUrl": "images/fiddle-leaf-fig.jpg",
+    "quantity": 1,
+    "shippingInfo": "FREE AU SHIPPING OVER $50"
+    
+  },
+  {
+    "name": "Olea Europaea",
+    "price": 58,
+    "description": "With its silvery-green leaves and gnarled trunk, Olive Tree is a symbol of peace and abundance. It will add a touch of the Mediterranean to your home.",
+    "category": "Indoor Plants",
+    "stock": 5,
+    "imageUrl": "images/olea-europaea.jpg",
+    "quantity": 1,
+    "shippingInfo": "FREE AU SHIPPING OVER $50"
+    
+  },
+  {
+    "name": "Philodendron",
+    "price": 28.00,
+    "description": "With its glossy, heart shaped leaves, Philodendron is a gorgeous climbing plant for draping along the mantlepiece.",
+    "category": "Indoor Plants",
+    "stock": 5,
+    "imageUrl": "images/philodendron.jpg",
+    "quantity": 1,
+    "shippingInfo": "FREE AU SHIPPING OVER $50"
+   
+  }
+]

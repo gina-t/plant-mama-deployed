@@ -2,6 +2,7 @@
 .env.production
 node_modules
 dist
+environment/
 
 # User-specific files
 *.rsuser

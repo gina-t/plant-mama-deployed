@@ -1,0 +1,8 @@
+[
+  {
+    "username": "tao",
+    "email": "taoamstaff@gmail.com",
+    "password": "hashed_password", 
+    "isAdmin": false
+  }
+]

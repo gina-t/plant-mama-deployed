@@ -8,21 +8,21 @@ dotenv.config({ path: path.resolve(__dirname, '../../../.env.development') });
 import jwt from 'jsonwebtoken';
 import { GraphQLError } from 'graphql';
 
+export const authenticateToken = ({ req }: any) => {
+  // Allows token to be sent via req.body, req.query, or headers
+  let token = req.body.token || req.query.token || req.headers.authorization;
 
-console.log('JWT_SECRET_KEY in auth.ts:', process.env.JWT_SECRET_KEY); 
-
-export const authenticateToken = ({ req }: { req: any }) => {
-  let token = req.body?.token || req.query?.token || req.headers?.authorization;
-
-  if (req.headers?.authorization) {
+  // If the token is sent in the authorization header, extract the token from the header
+  if (req.headers.authorization) {
     token = token.split(' ').pop().trim();
   }
 
+  // If no token is provided, return the request object as is
   if (!token) {
-    console.log('No token provided');
     return req;
   }
 
+  // Try to verify the token
   try {
     console.log('Verifying token:', token); // Log the token being verified
     const { data }: any = jwt.verify(token, process.env.JWT_SECRET_KEY || '', { maxAge: '2hr' });
