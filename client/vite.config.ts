@@ -8,5 +8,17 @@ import path from "node:path";
 dotenv.config({ path: path.resolve(__dirname, "environment/.env") });
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react(), 
+    tailwindcss()
+  ],
 });
+
+
+// import { defineConfig } from 'vite'
+// import tailwindcss from '@tailwindcss/vite'
+// export default defineConfig({
+//   plugins: [
+//     tailwindcss(),
+//   ],
+// })
