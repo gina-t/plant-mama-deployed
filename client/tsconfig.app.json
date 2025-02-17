@@ -20,10 +20,15 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    /* Type Definitions */
+    "typeRoots": ["./node_modules/@types", "./src/types"]
   },
   "include": [
-    "src",
-    "declarations.d.ts" // Ensure this line is present
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/types/global.d.ts",
+    "vite.config.ts"
   ]
 }
