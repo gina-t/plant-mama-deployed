@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
-import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
 import dotenv from "dotenv";
 import path from "node:path";
 
