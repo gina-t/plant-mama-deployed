@@ -22,13 +22,14 @@
     "noUncheckedSideEffectImports": true,
 
     /* Type Definitions */
-    "typeRoots": ["./node_modules/@types", "../node_modules/@types"]
+    "typeRoots": ["./node_modules/@types", "./src/types"]
   },
   "include": [
     "vite.config.ts",
-    "declarations.d.ts",
+    "global.d.ts",
     "node_modules/@types",
     "src/**/*.ts",
-    "src/**/*.tsx"
+    "src/**/*.tsx",
+    "src/types/global.d.ts"
   ]
 }
