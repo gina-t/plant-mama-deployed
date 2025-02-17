@@ -40,7 +40,7 @@ export default function ShoppingCart({ products }: ShoppingCartProps) {
       });
     } catch (error) {
       console.error("Failed to create payment intent:", error);
-      alert("Failed to create payment intent. Please try again later.");
+      // alert("Failed to create payment intent. Please try again later.");
     }
   };
 
@@ -96,7 +96,7 @@ export default function ShoppingCart({ products }: ShoppingCartProps) {
                             className="col-start-1 row-start-1 appearance-none rounded-md bg-white py-1.5 pl-3 pr-8 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                             value={product.quantity}
                             onChange={(e) => {
-                              const newQuantity = Number(e.target.value);
+                              const newQuantity = Number((e.target as HTMLSelectElement).value);
                               const price = product.price;
                               const oldQuantity = product.quantity;
                               product.quantity = newQuantity;

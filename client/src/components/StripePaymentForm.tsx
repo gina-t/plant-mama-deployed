@@ -61,7 +61,7 @@ const StripePaymentForm = () => {
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
+    const { name, value } = event.target as HTMLInputElement;
     setFormFields({ ...formFields, [name]: value });
   };
 

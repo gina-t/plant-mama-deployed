@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-    "target": "ES2020",
+    "target": "es2022",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": ["es2023", "dom", "dom.iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
 
@@ -24,6 +24,6 @@
   },
   "include": [
     "src",
-    "declarations.d.ts" 
+    "declarations.d.ts" // Ensure this line is present
   ]
 }
