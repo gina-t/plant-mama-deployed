@@ -1,7 +1,5 @@
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ApolloProvider } from "@apollo/client";
-import client from "./utils/apolloClient";
 import "./index.css";
 import App from "./App.tsx";
 import StoreFrontPage from "./pages/StoreFrontPage.tsx";
@@ -84,10 +82,8 @@ const router = createBrowserRouter([
 const rootElement = document.getElementById("root");
 if (rootElement) {
   ReactDOM.createRoot(rootElement).render(
-    <ApolloProvider client={client}>
-      <ShoppingCartProvider>
-        <RouterProvider router={router} />
-      </ShoppingCartProvider>
-    </ApolloProvider>,
+    <ShoppingCartProvider>
+      <RouterProvider router={router} />
+    </ShoppingCartProvider>
   );
 }
