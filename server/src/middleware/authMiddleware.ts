@@ -1,9 +1,7 @@
-// To make a route protected, you need to create a middleware function that verifies the JWT token inclcuded in the request header. If the token is valid, the middleware allows the request to proceed. If the token is invalid, the middleware returns an error response. Middleware is a function that runs during the request-response cycle. 
-
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import asyncHandler from 'express-async-handler';
-import User from '../models/userModel.js';
+import User, { UserDocument } from '../models/userModel.js';
 
 export const protect = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
   let token;
@@ -15,7 +13,7 @@ export const protect = asyncHandler(async (req: Request, res: Response, next: Ne
     const decoded = jwt.verify(token, process.env.JWT_SECRET!);
     console.log('Decoded ID:', (decoded as any).id); // Debugging statement
 
-    req.user = await User.findById((decoded as any).id).select('-password');
+    req.user = await User.findById((decoded as any).id).select('-password') as UserDocument;
     console.log('User:', req.user); // Debugging statement
 
     if (!req.user) {
@@ -29,3 +27,5 @@ export const protect = asyncHandler(async (req: Request, res: Response, next: Ne
     throw new Error('Not authorized, no token');
   }
 });
+
+// To make a route protected, you need to create a middleware function that verifies the JWT token inclcuded in the request header. If the token is valid, the middleware allows the request to proceed. If the token is invalid, the middleware returns an error response. Middleware is a function that runs during the request-response cycle. 
