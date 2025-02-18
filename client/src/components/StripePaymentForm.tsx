@@ -19,10 +19,10 @@ const StripePaymentForm = () => {
 
   const { displayName, email } = formFields;
 
-  const API_BASE_URL =
+  const url =
     process.env.NODE_ENV === "production"
-      ? "https://plant-mama-deployed.onrender.com"
-      : "http://localhost:5173";
+      ? "https://plant-mama-deployed.onrender.com/thankyou"
+      : "http://localhost:5173/thankyou";
 
   const paymentHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -37,7 +37,7 @@ const StripePaymentForm = () => {
       elements,
       confirmParams: {
         // redirect to route thankyou
-        return_url: `${API_BASE_URL}/thankyou/`,
+        return_url: url,
         payment_method_data: {
           billing_details: {
             name: displayName,
