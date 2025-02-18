@@ -19,7 +19,7 @@ const Form = ({ conditionalValue }: FormProps) => {
   const [loginUser] = useMutation(LOGIN_USER);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>):void => {
-    console.dir(event.target);
+    // console.dir(event.target);
     const { name, value } = event.currentTarget as HTMLInputElement;
 
     if (name === "username") {
