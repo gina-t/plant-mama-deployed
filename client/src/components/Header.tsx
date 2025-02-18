@@ -18,7 +18,7 @@ const navigation = {
       to: "/accessories",
     },
     {
-      name: "About Us",
+      name: "About",
       to: "/about-us",
     },
   ],
