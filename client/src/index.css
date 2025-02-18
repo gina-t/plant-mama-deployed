@@ -1,18 +1,12 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "SantEliaScript";
-  src: url("./assets/SantEliaScript-Light.woff2") format("woff2");
-}
-
-@font-face {
   font-family: "Cupidus";
-  src: url("./assets/Cupidus-Extralight.ttf") format("ttf");
+  src: url("./assets/Cupidus-Extralight.ttf") format("truetype");
 }
 
 @theme {
-  --header-font-family: "SantEliaScript", sans-serif;
-  --body-font-family: "Cupidus", sans-serif;
+  --body-font-family: "Cupidus", "Roboto", sans-serif;
 }
 
 /* Apply the custom properties to the respective elements */
@@ -20,6 +14,11 @@ body {
   font-family: var(--body-font-family);
 }
 
-.header {
-  font-family: var(--header-font-family);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--body-font-family);
 }
