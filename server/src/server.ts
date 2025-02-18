@@ -15,9 +15,9 @@ const __dirname = path.dirname(__filename);
 
 // Load environment variables based on the environment
 if (process.env.NODE_ENV !== 'production') {
-  dotenv.config({ path: path.resolve(__dirname, '../../../.env.development') });
-} else{
-  dotenv.config({ path: path.resolve(__dirname, '../../../.env.development') });
+  dotenv.config({ path: path.resolve(__dirname, '../../.env.development') });
+} else {
+  dotenv.config({ path: path.resolve(__dirname, '../../.env.production') });
 }
 
 const startApolloServer = async () => {
@@ -41,10 +41,18 @@ const startApolloServer = async () => {
     apiVersion: '2025-01-27.acacia',
   });
   console.log('Stripe instance created successfully');
-  
+
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
-  app.use(cors({ origin: 'http://localhost:5173' })); 
+  app.use(
+    cors({
+      origin: [
+        'https://plant-mama-deployed.onrender.com',
+        'http://localhost:5173',
+      ],
+      credentials: true,
+    })
+  );
 
   interface RequestBody {
     amount: number;
@@ -52,8 +60,8 @@ const startApolloServer = async () => {
 
   app.post('/secret', async (req: Request, res: Response) => {
     const { amount } = req.body;
-    console.log("Amount:", amount);
-    console.log("Type of Amount:", typeof amount);
+    console.log('Amount:', amount);
+    console.log('Type of Amount:', typeof amount);
     try {
       const intent = await stripe.paymentIntents.create({
         amount: amount,
