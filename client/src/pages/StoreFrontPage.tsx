@@ -8,7 +8,8 @@ export default function StoreFrontPage() {
   return (
     <div className="bg-white">
       <Hero />
-      <div className="relative bg-[#D3F1DF] py-16">
+      <div className="relative bg-[#D3F1DF] py-24">
+
         {/* Decorative image and overlay */}
         <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
           <img
