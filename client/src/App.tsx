@@ -3,6 +3,7 @@ import { ApolloProvider } from "@apollo/client";
 import { Outlet } from "react-router-dom";
 import Banner from "./components/Banner";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
         <Banner />
         <Header />
         <Outlet />
+        <Footer />
       </div>
     </ApolloProvider> 
   )
