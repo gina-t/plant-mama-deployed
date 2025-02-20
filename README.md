@@ -17,7 +17,7 @@ A scalable user-focused e-commerce MERN app featuring:
 
 - Vite + React + Typescript
 
-- Tailwind CSS
+- Tailwind CSS + custom CSS
 
 - Node & Express.js
 
